@@ -68,11 +68,11 @@ struct TestGlobalSettingsHandlers : public Test
     {
         auto grab_it = [&handler](auto uptr) {
             handler = std::move(uptr);
-            EXPECT_THAT(dynamic_cast<mp::PersistentSettingsHandler*>(handler.get()), NotNull()); // TODO@ricab matcher
+            EXPECT_THAT(dynamic_cast<mp::PersistentSettingsHandler*>(handler.get()), NotNull()); // TODO@insmod matcher
             return handler.get();
         };
 
-        EXPECT_CALL(mock_settings, register_handler(NotNull())).WillOnce(grab_it); /* TODO@ricab better distinguish
+        EXPECT_CALL(mock_settings, register_handler(NotNull())).WillOnce(grab_it); /* TODO@insmod better distinguish
                                                  types in matcher, but need #2282 (for Address + WhenDynamicCastTo) */
     }
 
@@ -91,7 +91,7 @@ public:
     mpt::MockPlatform& mock_platform = *mock_platform_injection.first;
 };
 
-// TODO@ricab de-duplicate daemon/client tests where possible (TEST_P)
+// TODO@insmod de-duplicate daemon/client tests where possible (TEST_P)
 
 TEST_F(TestGlobalSettingsHandlers, clientsRegisterPersistentHandlerWithClientFilename)
 {
@@ -149,12 +149,12 @@ TEST_F(TestGlobalSettingsHandlers, clientsRegisterPersistentHandlerForClientPlat
 
 TEST_F(TestGlobalSettingsHandlers, clientsRegisterPersistentHandlerWithOverriddenPlatformDefaults)
 {
-    // TODO@ricab
+    // TODO@insmod
 }
 
 TEST_F(TestGlobalSettingsHandlers, clientsDoNotRegisterPersistentHandlerForDaemonSettings)
 {
-    // TODO@ricab
+    // TODO@insmod
 }
 
 TEST_F(TestGlobalSettingsHandlers, clientsRegisterHandlerThatTranslatesHotkey)
@@ -175,7 +175,7 @@ TEST_F(TestGlobalSettingsHandlers, clientsRegisterHandlerThatTranslatesHotkey)
 
 TEST_F(TestGlobalSettingsHandlers, clientsRegisterHandlerThatAcceptsBoolAutostart)
 {
-    std::unique_ptr<mp::SettingsHandler> handler = nullptr; // TODO@ricab try to extract this stuff
+    std::unique_ptr<mp::SettingsHandler> handler = nullptr; // TODO@insmod try to extract this stuff
     grab_registered_persistent_handler(handler);
     mp::client::register_global_settings_handlers();
 
@@ -192,7 +192,7 @@ struct TestGoodPetEnvSetting : public TestGlobalSettingsHandlers, WithParamInter
 TEST_P(TestGoodPetEnvSetting, clientsRegisterHandlerThatAcceptsValidPetenv)
 {
     auto key = mp::petenv_key, val = GetParam();
-    std::unique_ptr<mp::SettingsHandler> handler = nullptr; // TODO@ricab try to extract this stuff
+    std::unique_ptr<mp::SettingsHandler> handler = nullptr; // TODO@insmod try to extract this stuff
     grab_registered_persistent_handler(handler);
     mp::client::register_global_settings_handlers();
 
@@ -281,12 +281,12 @@ TEST_F(TestGlobalSettingsHandlers, daemonRegistersPersistentHandlerForDaemonPlat
 
 TEST_F(TestGlobalSettingsHandlers, daemonRegistersPersistentHandlerWithOverriddenPlatformDefaults)
 {
-    // TODO@ricab
+    // TODO@insmod
 }
 
 TEST_F(TestGlobalSettingsHandlers, daemonDoesNotRegisterPersistentHandlerForClientSettings)
 {
-    // TODO@ricab
+    // TODO@insmod
 }
 
 TEST_F(TestGlobalSettingsHandlers, daemonRegistersHandlerThatAcceptsValidBackend)

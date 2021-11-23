@@ -81,7 +81,7 @@ TYPED_TEST(TestSuccessfulSettingsGetAs, getAsConvertsValues)
         for (const auto& repr : reprs)
         {
             EXPECT_CALL(this->mock_settings, get(Eq(key))).WillOnce(Return(repr)); /* needs `this` ¯\_(ツ)_/¯
-                                                                                      TODO@ricab try with newer gtest */
+                                                                                     TODO@insmod try with newer gtest */
             EXPECT_EQ(MP_SETTINGS.get_as<TypeParam>(key), val);
         }
     }
