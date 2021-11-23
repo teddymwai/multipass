@@ -17,7 +17,7 @@
 
 #include "libvirt_virtual_machine.h"
 
-#include <multipass/exceptions/not_implemented_on_this_backend_exception.h> // TODO@ricab remove
+#include <multipass/exceptions/not_implemented_on_this_backend_exception.h> // TODO@insmod remove
 #include <multipass/exceptions/start_exception.h>
 #include <multipass/format.h>
 #include <multipass/logging/log.h>
@@ -493,15 +493,15 @@ mp::LibVirtVirtualMachine::open_libvirt_connection(const mp::LibvirtWrapper::UPt
 
 void mp::LibVirtVirtualMachine::update_num_cores(int num_cores)
 {
-    throw NotImplementedOnThisBackendException{"Update CPUs"}; // TODO@ricab implement
+    throw NotImplementedOnThisBackendException{"Update CPUs"}; // TODO@insmod implement
 }
 
 void mp::LibVirtVirtualMachine::resize_memory(const MemorySize& new_size)
 {
-    throw NotImplementedOnThisBackendException{"Resize memory"}; // TODO@ricab implement
+    throw NotImplementedOnThisBackendException{"Resize memory"}; // TODO@insmod implement
 }
 
 void mp::LibVirtVirtualMachine::resize_disk(const MemorySize& new_size)
 {
-    throw NotImplementedOnThisBackendException{"Resize disk"}; // TODO@ricab implement
+    throw NotImplementedOnThisBackendException{"Resize disk"}; // TODO@insmod implement
 }
