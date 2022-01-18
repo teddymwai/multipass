@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019-2021 Canonical, Ltd.
+ * Copyright (C) 2019-2022 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -393,9 +393,10 @@ TEST_F(PlatformLinux, test_not_snap_returns_expected_default_address)
     EXPECT_EQ(mp::platform::default_server_address(), fmt::format("unix:/run/multipass_socket"));
 }
 
-TEST_F(PlatformLinux, test_is_alias_supported_returns_true)
+TEST_F(PlatformLinux, test_is_alias_supported_default)
 {
     EXPECT_TRUE(MP_PLATFORM.is_alias_supported("focal", "release"));
+    EXPECT_FALSE(MP_PLATFORM.is_alias_supported("core20", ""));
 }
 
 TEST_F(PlatformLinux, test_is_alias_supported_lxd)
@@ -405,6 +406,7 @@ TEST_F(PlatformLinux, test_is_alias_supported_lxd)
     EXPECT_TRUE(MP_PLATFORM.is_alias_supported("focal", "release"));
     EXPECT_TRUE(MP_PLATFORM.is_alias_supported("core18", "snapcraft"));
     EXPECT_TRUE(MP_PLATFORM.is_alias_supported("core20", "snapcraft"));
+    EXPECT_TRUE(MP_PLATFORM.is_alias_supported("core20", ""));
     EXPECT_FALSE(MP_PLATFORM.is_alias_supported("core", "snapcraft"));
     EXPECT_FALSE(MP_PLATFORM.is_alias_supported("16.04", "snapcraft"));
 }

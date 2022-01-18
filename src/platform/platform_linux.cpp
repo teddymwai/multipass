@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2021 Canonical, Ltd.
+ * Copyright (C) 2017-2022 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -250,6 +250,10 @@ QString mp::platform::Platform::get_workflows_url_override() const
 
 bool mp::platform::Platform::is_alias_supported(const std::string& alias, const std::string& remote) const
 {
+    // core20 only works on LXD today
+    if (utils::get_driver_str() != "lxd" && remote.empty() && alias == "core20")
+        return false;
+
     // snapcraft:core don't work on LXD yet
     return !(utils::get_driver_str() == "lxd" && remote == "snapcraft" && (alias == "core" || alias == "16.04"));
 }

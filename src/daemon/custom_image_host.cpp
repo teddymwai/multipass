@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018-2021 Canonical, Ltd.
+ * Copyright (C) 2018-2022 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -71,6 +71,14 @@ const QMap<QString, QMap<QString, CustomImageInfo>> multipass_image_info{
         "Ubuntu",
         "core-18",
         "Core 18",
+        "",
+        ""}},
+      {{"ubuntu-core-20-amd64.img.xz"},
+       {"https://cdimage.ubuntu.com/ubuntu-core/20/stable/current/",
+        {"core20"},
+        "Ubuntu",
+        "core-20",
+        "Core 20",
         "",
         ""}}}}};
 
